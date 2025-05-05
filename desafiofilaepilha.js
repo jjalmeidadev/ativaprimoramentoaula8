@@ -3,36 +3,31 @@ class FilaAtendimento {
     this.itens = [];
   }
 
-  // Adiciona um item ao final da fila
   enfileirar(item) {
     this.itens.push(item);
-    console.log(`📥 '${item}' entrou na fila.`);
+    console.log(`'${item}' foi adicionado à fila.`);
   }
 
-  // Remove o item do início da fila
   desenfileirar() {
-    if (this.estaVazia()) {
-      console.log('⚠️ A fila está vazia. Nenhum item para remover.');
+    if (this.vazia()) {
+      console.log('A fila está vazia.');
       return null;
     }
     const removido = this.itens.shift();
-    console.log(`🚪 '${removido}' saiu da fila.`);
+    console.log(`'${removido}' foi removido da fila.`);
     return removido;
   }
 
-  // Mostra o primeiro da fila
   frente() {
     return this.itens[0];
   }
 
-  // Verifica se a fila está vazia
-  estaVazia() {
+  vazia() {
     return this.itens.length === 0;
   }
 
-  // Imprime a fila atual
-  imprimir() {
-    console.log('🚶‍♂️ Fila atual:', this.itens.join(' -> ') || 'vazia');
+  escrever() {
+    console.log('Fila:', this.itens.join(' -> ') || 'vazia');
   }
 }
 
@@ -41,9 +36,9 @@ filaatendimento.enfileirar('Aluno A');
 filaatendimento.enfileirar('Aluno B');
 filaatendimento.enfileirar('Aluno C');
 filaatendimento.enfileirar('Aluno D');
-console.log('👀 Primeiro da fila:' + filaatendimento.frente());
+console.log('Primeiro da fila:' + filaatendimento.frente());
 filaatendimento.desenfileirar('Aluno A');
-filaatendimento.imprimir();
+filaatendimento.escrever();
 
 class PilhaDocumentos {
   constructor() {
@@ -52,16 +47,16 @@ class PilhaDocumentos {
 
   empilhar(item) {
     this.itens.push(item);
-    console.log(`✔️ Elemento '${item}' empilhado.`);
+    console.log(`'${item}' foi empilhado.`);
   }
 
   desempilhar() {
-    if (this.estaVazia()) {
-      console.log('⚠️ A pilha está vazia. Nada a desempilhar.');
+    if (this.vazia()) {
+      console.log('A pilha está vazia.');
       return null;
     }
     const removido = this.itens.pop();
-    console.log(`❌ Elemento '${removido}' desempilhado.`);
+    console.log(`'${removido}' foi desempilhado.`);
     return removido;
   }
 
@@ -72,11 +67,11 @@ class PilhaDocumentos {
     return this.itens[this.itens.length - 1];
   }
 
-  estaVazia() {
+  vazia() {
     return this.itens.length === 0;
   }
 
-  imprimir() {
+  escrever() {
     console.log('Documentos pendentes:', this.itens.slice().reverse().join(' <- topo'));
   }
 }
@@ -86,7 +81,7 @@ pilhadocumentos.empilhar('Documento A');
 pilhadocumentos.empilhar('Documento B');
 pilhadocumentos.desempilhar('Documento B');
 pilhadocumentos.topo();
-pilhadocumentos.imprimir();
+pilhadocumentos.escrever();
 
 
 
